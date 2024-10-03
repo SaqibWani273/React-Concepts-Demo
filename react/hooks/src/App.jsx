@@ -4,36 +4,33 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [title, setTitle] = useState("Hello 1")
 
-  function changeTitle(){
-    setTitle(Math.random())
+  const todos=[
+    {id:1, title:"Todo 1",description:"Description 1"},
+    {id:2, title:"Todo 2",description:"Description 2"},
+    {id:3, title:"Todo 3",description:"Description 3"},
+  ];
+  const [todosState,setTodos]=useState(todos);
+  function addTodo({title,description,id}){
+    setTodos([{title:title,description:description,id:id},...todosState]);
   }
   return (
-    <div>
-      <br /><br />
-      
-      <button onClick={()=>{setTitle(Math.random())}}>Click me</button>
-      <br /><br />
-      {/* <button onClick={changeTitle}>Click me</button> */}
-     <ReactMemo xyz={title}></ReactMemo>
-     {/* <ChangingComponent title1="hello 1"></ChangingComponent> */}
-     <ReactMemo xyz="hello 2"></ReactMemo>
-     <ReactMemo xyz="hello 3"></ReactMemo>
-     <br />
-    </div>
+      <div>
+      <button onClick={function temp(){
+        addTodo({title:"dummy title",description:"dummy description",id:4})
+      }}>Add Todo</button>
+      {todosState.map(todo => <Todo key={todo.id} title={todo.title} description={todo.description}/>)}
+        </div>
+    
   )
+ 
 }
-//React memo is used to avoid unnecessary rerendering of components
-const ReactMemo = memo(function MyComponent({xyz}){
-  return <div>{xyz}</div>
-})
-function ChangingComponent({title1}){
-  const [title, setTitle] = useState(title1)
+function Todo({title,description}){
   return <div>
-    {title}
-    <button onClick={()=>{setTitle(Math.random())}}>change title</button>
-    </div>
+    <h1>{title}</h1>
+    
+    <h2>{description}</h2>
+  </div>
 }
 
 export default App
