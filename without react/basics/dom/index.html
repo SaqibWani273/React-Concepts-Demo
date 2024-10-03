@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function calculateSum(){
+            const num1= document.getElementById("num1").value;
+            const num2=document.getElementById("num2").value;
+            console.log("hi"+num1)
+            document.getElementById("sum").innerHTML= parseInt(num1)+parseInt(num2);
+
+        }
+    </script>
+    <input type="text" placeholder="num1" id="num1">
+    <input type="text" placeholder="num2" id = "num2">
+    <button onclick="calculateSum()">Calculate</button>
+    <div id="sum">sum </div>
+</body>
+</html>

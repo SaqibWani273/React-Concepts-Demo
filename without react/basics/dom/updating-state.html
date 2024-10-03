@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="todos"></div>
+    <script>
+             function createTodoDiv(title,time,id){
+
+const parentDiv=document.createElement("div");
+const titleDiv=document.createElement("div");
+titleDiv.innerHTML=title;
+const timeDiv=document.createElement("div");
+timeDiv.innerHTML=time;
+const button=document.createElement("button");
+button.innerHTML="Mark as Done"
+button.setAttribute("onclick",`markAsDone(${id})`);
+// button.setAttribute("id",id);
+parentDiv.setAttribute("id",id);
+parentDiv.appendChild(titleDiv);
+parentDiv.appendChild(timeDiv);
+parentDiv.appendChild(button);
+
+return parentDiv;
+
+
+        }
+        let todolist;
+        let skip=1;
+        async function getTodos(skip) {
+            const response= await fetch(`https://dummyjson.com/todos?limit=3&skip=${skip}`);
+json=await  response.json()
+todolist=json.todos;
+console.log(json.todos)
+const todosDiv=document.getElementById("todos")
+todolist.forEach(element => {
+   todos.appendChild( createTodoDiv(element.todo,element.completed,element.id));
+});
+        }
+        window.setInterval( function(){
+           getTodos(skip);
+           skip+=3;
+        } ,3000);
+        
+    </script>
+</body>
+</html>

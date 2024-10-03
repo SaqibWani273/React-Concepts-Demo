@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center><button onclick="increment()">+</button>&nbsp;&nbsp;&nbsp;<button onclick="decrement()">-</button></center>
+    <br><br><h2 id="count">0</h2>
+</body>
+<script>
+    let countTag=document.getElementById("count");
+function increment(){
+    countTag.innerHTML=parseInt(countTag.innerHTML) +1;
+}
+function decrement(){
+    
+    countTag.innerHTML=parseInt(countTag.innerHTML) -1;
+}
+</script>
+</html>

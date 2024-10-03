@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center><button onclick="increment()">+</button>&nbsp;&nbsp;&nbsp;<button onclick="decrement()">-</button></center>
+    <br><br><div id="count"></div>
+</body>
+<script>
+    
+    let state={
+        count:0
+    }
+    function countComponent(val){
+const countTag=document.createElement("h2");
+countTag.innerHTML=val
+return countTag;
+    }
+    function reRender(){
+        document.getElementById("count").innerHTML="";
+        let comp1=countComponent(state.count)
+        document.getElementById("count").appendChild(comp1);
+    }
+function increment(){
+    state.count++;
+reRender()
+}
+function decrement(){
+    state.count--;
+    reRender();
+}
+reRender();
+</script>
+</html>

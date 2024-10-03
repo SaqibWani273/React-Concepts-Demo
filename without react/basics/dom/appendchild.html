@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function markAsDone(id){
+         const element=   document.getElementById(id);
+        //  element.innerHTML="Done !";
+         element.children[2].innerHTML="Done !";
+        }
+        var todoId=1;
+        function createTodoDiv(title,time,id){
+
+const parentDiv=document.createElement("div");
+const titleDiv=document.createElement("div");
+titleDiv.innerHTML=title;
+const timeDiv=document.createElement("div");
+timeDiv.innerHTML=time;
+const button=document.createElement("button");
+button.innerHTML="Mark as Done"
+button.setAttribute("onclick",`markAsDone(${id})`);
+// button.setAttribute("id",id);
+parentDiv.setAttribute("id",id);
+parentDiv.appendChild(titleDiv);
+parentDiv.appendChild(timeDiv);
+parentDiv.appendChild(button);
+
+return parentDiv;
+
+
+        }
+        function addTodo(){
+            const title=document.getElementById("title").value;
+            const time=document.getElementById("time").value;
+            if(title==''||time==''){
+                return;
+            }
+const todolist=document.getElementById("todolist");
+todolist.appendChild(createTodoDiv(title,time,todoId++));
+        }
+    </script>
+    <input type="text" placeholder="title" id="title">
+    <input type="text" placeholder="time" id="time">
+    <br><br>
+    <button onclick="addTodo()">Add Todo</button>
+    <div id="todolist"></div>
+</body>
+</html>
