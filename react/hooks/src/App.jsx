@@ -1,31 +1,25 @@
-import { useState,Fragment,memo } from 'react'
+import { useState,Fragment,memo, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+let num=0;
+let dep=0;
 function App() {
-  function TextComponent(){
-    return <div>
-      <h1 >title 1</h1>
-      <p>description 1</p>
-    </div>
-  }
-  return(
-    <div>
-    <WrapperComponent >
-     
-      <div> hi there</div>
-      <TextComponent/>
-      
-    </WrapperComponent>
+  const [state1,setState1]= useState(num)
+if(num%10==0)
+  dep++;
+  //similar to initstate in flutter
+  useEffect(function(){
+    alert("HEllow")
+  },[dep])//passing empty array means call the function only once i.e. when
+  //mounted
+  return (
+    <div>{state1}
+    <button onClick={()=> setState1(++num)}>update</button>
+
     </div>
   )
-  function WrapperComponent({children}){
-    console.log(children)
-    return <div style={{backgroundColor:'purple', border:'2px solid black', padding:30}}>
-{children}
-    </div>
-  }
 }
 
 
