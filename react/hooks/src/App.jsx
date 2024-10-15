@@ -1,25 +1,42 @@
-import { useState,Fragment,memo, useEffect } from 'react'
+import { useState,Fragment,memo, useEffect, useMemo } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-let num=0;
-let dep=0;
-function App() {
-  const [state1,setState1]= useState(num)
-if(num%10==0)
-  dep++;
-  //similar to initstate in flutter
-  useEffect(function(){
-    alert("HEllow")
-  },[dep])//passing empty array means call the function only once i.e. when
-  //mounted
-  return (
-    <div>{state1}
-    <button onClick={()=> setState1(++num)}>update</button>
+//useeffect gets executed after render
+//usememo gets executed during render
 
-    </div>
-  )
+let i=1;
+function App() {
+  console.log(i++)
+  const [count,setCount]= useState(0)
+  const [num,setNum]=useState(0)
+  // const [sum,setSum]=useState(0)
+  let sum=0;
+  // console.log(calculateSum())
+  useMemo(function(){
+   sum=0;
+    for(let i=1;i<=num;i++)
+      {
+        sum+=i;
+      }
+      // console.log("sum="+sum)
+      // setSum(sum1)
+    },[num])
+    // console.log("sum="+sum)
+return (
+  <div>
+    <input type="text" onChange={ (e)=>setNum(e.target.value)}/>
+    <p>sum of {num} is  {sum}</p>
+    <button onClick={()=>setCount(count+1)}>update count</button><br />
+    {count}</div>
+)
+function calculateSum(num){
+  let sum=0;
+  // console.log("num = "+num)
+  
+  return sum;
+}
 }
 
 
