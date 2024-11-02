@@ -3,7 +3,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 export default function CardComponent({cardDetails}) {
     const textColor=cardDetails.isFirst?'text-white':'text-black';
     console.log(cardDetails.isFirst)
-    return   <div className={`m-5  rounded-lg  p-5 ${cardDetails.isFirst?'bg-sky-600':'bg-gray-100' } ${textColor}`} >
+    return   <div className={`mr-5  rounded-lg  p-5 ${cardDetails.isFirst?'bg-sky-600':'bg-white' } ${textColor}`} >
 
     <div className='flex'>
         <p>{cardDetails.title}</p>
